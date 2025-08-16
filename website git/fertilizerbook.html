@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fertilizer & Chemical Purchase Form</title>
+  <style>
+    :root {
+      --primary: #3d9970;
+      --background: #f7fdf9;
+      --text: #1e3c2d;
+      --button-hover: #5bb98a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--text);
+    }
+
+    form {
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--text);
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: var(--background);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .radio-group {
+      margin-top: 10px;
+    }
+
+    .radio-group label {
+      display: inline-block;
+      margin-right: 20px;
+      font-weight: normal;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 30px;
+      background-color: var(--primary);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    #total-cost {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+        header {
+      background-color: var(--header-bg);
+      box-shadow: 0 2px 10px var(--header-shadow);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: bold;
+      font-size: 22px;
+      transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      color: var(--primary);
+    }
+
+    .logo-icon {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      background-color: rgba(61, 153, 112, 0.1);
+    }
+
+    .nav-links a.active {
+      color: var(--primary);
+      background-color: rgba(61, 153, 112, 0.1);
+    }
+
+    /* Rest of your existing styles... */
+    form {
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ... (keep all your existing styles below) ... */
+  </style>
+  <!-- Add Font Awesome for the home icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">
+        <i class="fas fa-home logo-icon"></i>
+        <span>Agro Supplies</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index - Copy.html">Home</a>
+        <a href="#" class="active">Products</a>
+     
+      </nav>
+    </div>
+  </header>
+
+
+
+  <form action="fertilizer-purchase.php" method="post">
+   
+    <h1>Purchase Fertilizers & Chemicals</h1>
+
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" name="fullname" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="number" id="phone" name="phone" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email">
+
+    <label for="category">Select Input Category</label>
+    <select id="category" name="category" required onchange="toggleProductOptions()">
+      <option value="">-- Select Category --</option>
+      <option value="Fertilizer">Fertilizer</option>
+      <option value="Chemical">Chemical</option>
+    </select>
+
+    <div id="fertilizer-options" class="hidden">
+      <label for="fertilizer-type">Type of Fertilizer</label>
+      <select id="fertilizer-type" name="inputtype">
+        <option value="">-- Choose Fertilizer --</option>
+        <option value="Urea">Urea</option>
+        <option value="DAP">DAP</option>
+        <option value="NPK">NPK</option>
+        <option value="Compost">Compost</option>
+      </select>
+    </div>
+
+    <div id="chemical-options" class="hidden">
+      <label for="chemical-type">Type of Chemical</label>
+      <select id="chemical-type" name="inputtype">
+        <option value="">-- Choose Chemical --</option>
+        <option value="Herbicide">Herbicide</option>
+        <option value="Pesticide">Pesticide</option>
+        <option value="Fungicide">Fungicide</option>
+        <option value="Insecticide">Insecticide</option>
+      </select>
+    </div>
+
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" min="1" oninput="estimateCost()">
+
+    <label for="unit">Unit</label>
+    <select id="unit" name="unit" required>
+      <option value="kg">Kilogram (kg)</option>
+      <option value="liter">Liter</option>
+      <option value="quintal">Quintal</option>
+    </select>
+
+    <div id="total-cost">Estimated Total: —</div>
+
+    <label>Do you need delivery?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="delivery" value="Yes" required> Yes</label>
+      <label><input type="radio" name="delivery" value="No"> No</label>
+    </div>
+
+    <label for="location">Delivery Address</label>
+    <input type="text" id="location" name="location" required>
+
+    <label for="payment">Preferred Payment Method</label>
+    <div class="radio-group">
+      <label><input type="radio" name="payment" value="Cash" required> Cash</label>
+      <label><input type="radio" name="payment" value="Mobile Banking"> Mobile Banking</label>
+      <label><input type="radio" name="payment" value="Bank Transfer"> Bank Transfer</label>
+    </div>
+
+    <label for="notes">Additional Instructions</label>
+    <textarea id="notes" name="notes" placeholder="Preferred brand, packaging, or handling notes..."></textarea>
+
+    <button type="submit">Submit Purchase Order</button>
+  </form>
+
+  <script>
+    function toggleProductOptions() {
+      const category = document.getElementById('category').value;
+      document.getElementById('fertilizer-options').classList.add('hidden');
+      document.getElementById('chemical-options').classList.add('hidden');
+
+      if (category === 'Fertilizer') {
+        document.getElementById('fertilizer-options').classList.remove('hidden');
+      } else if (category === 'Chemical') {
+        document.getElementById('chemical-options').classList.remove('hidden');
+      }
+    }
+
+    function estimateCost() {
+      const quantity = document.getElementById('quantity').value;
+      const unit = document.getElementById('unit').value;
+      let unitPrice = 0;
+
+      switch(unit) {
+        case 'kg': unitPrice = 25; break;
+        case 'liter': unitPrice = 40; break;
+        case 'quintal': unitPrice = 1200; break;
+      }
+
+      if (quantity > 0) {
+        const total = quantity * unitPrice;
+        document.getElementById('total-cost').innerText = `Estimated Total: ${total} Birr`;
+      } else {
+        document.getElementById('total-cost').innerText = 'Estimated Total: —';
+      }
+    }
+  </script>
+
+</body>
+</html>
